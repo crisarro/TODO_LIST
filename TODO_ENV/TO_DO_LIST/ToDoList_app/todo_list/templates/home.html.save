@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}To-Do List{% endblock %}
+
+{% block content %}
+<h1>Hello World! Homepage</h1>
+
+{% if messages %}
+	{% for message in messages %}
+		{{ message }}
+	{% endfor %}
+{% endif %}
+
+	{% if all_items %}
+	<table class="table table-bordered">
+		{% for things in all_items %}
+			{% if things.completed %}
+				<tr class="table-primary">
+					<td>{{things.item}}</td>
+					<td><center>{{ things.completed }}</center></td>
+					<td><center>Delete</center></td>
+				</tr>
+			{% else %}
+				<tr>
+					<td>{{things.item}}</td>
+					<td><center>{{ things.completed }}</center></td>
+					<td><center>Delete</center></td>
+				</tr>
+			{% endif %}
+		{% endfor %}
+	</table>
+	{% endif %}
+
+{% endblock %}

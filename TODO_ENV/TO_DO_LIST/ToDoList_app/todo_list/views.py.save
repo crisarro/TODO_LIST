@@ -1,0 +1,19 @@
+from django.shortcuts import render
+from .models import List
+from .forms import ListForm
+
+# Create your views here.
+
+def home(request):
+	if request.method == "POST":
+		form = ListForm(request.post or None)
+
+
+	else:
+
+		all_items = List.objects.all
+		return render(request, "home.html", {'all_items': all_items})
+
+def about(request):
+	return render(request,"about.html", {})
+
